@@ -1,0 +1,12 @@
+#!/bin/bash
+APP_NAME=football-leagues-php-fpm
+
+case "$1" in
+
+"install")
+    docker exec -it $APP_NAME bash -c "composer install && php bin/console doctrine:schema:update --force"
+;;
+
+*) docker exec -it $APP_NAME bash
+   ;;
+esac
