@@ -11,16 +11,31 @@ $ docker-compose up -d
 $ bin/app-bash install
 ```
 
-> Endpoints
+#### Endpoints
+
+> Login
 ```
-GET /api/team/{leagueId} 
+POST /api/login_check 
 ```
+> Login JSON request body example:
+```
+{"username":"test","password":"test"}
+```
+for creating user check [FOSUserBundle](https://symfony.com/doc/2.0/bundles/FOSUserBundle/command_line_tools.html#create-a-user) doc
+
+> Create new team
 ```
 POST /api/team 
 ```
+> Get list of league teams
+```
+GET /api/team/{leagueId} 
+```
+> Update team data
 ```
 PUT /api/team/{leagueId} 
 ```
+> Remove league
 ```
 DELETE /api/league/{leagueId} 
 ```

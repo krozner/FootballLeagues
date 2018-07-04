@@ -12,7 +12,9 @@ class DefaultController extends Controller
      */
     public function homeAction()
     {
-        return $this->json([]);
+        return $this->json([
+            "Football League"
+        ]);
     }
 
     /**
@@ -29,11 +31,4 @@ class DefaultController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/api/test", methods={"GET"})
-     */
-    public function testAction()
-    {
-        return $this->json([]);
-    }
 }

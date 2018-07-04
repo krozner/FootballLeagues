@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class LeagueController extends BaseApiController
 {
     /**
-     * Modify all attributes of a football team
+     * Remove football league
      *
      * @ParamConverter("league", class="FlBundle:League", isOptional=true)
      * @Route("/api/league/{league}", methods={"DELETE"})
