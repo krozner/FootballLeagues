@@ -19,13 +19,24 @@ services:
         - .:/var/www/app
         - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
 
-    mariadb:
+    database_dev:
+          image: mariadb:10.3.7
+          container_name: football-leagues-db-dev
+          environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=football_leagues
+            - MYSQL_USER=football_leagues
+            - MYSQL_PASSWORD=football_leagues
+          ports:
+            - "8001:3306"
+
+    database_test:
       image: mariadb:10.3.7
-      container_name: football-leagues-mariadb
+      container_name: football-leagues-db-test
       environment:
         - MYSQL_ROOT_PASSWORD=root
         - MYSQL_DATABASE=football_leagues
         - MYSQL_USER=football_leagues
         - MYSQL_PASSWORD=football_leagues
       ports:
-        - "8001:3306"
+        - "8002:3306"

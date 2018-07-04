@@ -1,6 +1,9 @@
 DROP TABLE IF EXISTS team;
 DROP TABLE IF EXISTS league;
 
+TRUNCATE TABLE user;
+INSERT INTO user (username, username_canonical, email, email_canonical, enabled, salt, password, last_login, confirmation_token, password_requested_at, roles, first_name, last_name) VALUES ('test', 'test', 'test', 'test', 1, null, '$2y$13$xzHopDrK.Fb8JW6yua4uF.6vs8y9JkSRbQM1Pq/XCuLs6YwHNLv1y', null, null, null, 'a:0:{}', null, null);
+
 CREATE TABLE league (
   `id`         INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `name`       VARCHAR(100) NOT NULL,

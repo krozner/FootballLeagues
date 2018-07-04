@@ -9,7 +9,9 @@
 >
     <php>
         <ini name="error_reporting" value="-1" />
-        <server name="KERNEL_CLASS" value="AppKernel" />
+        <server name="KERNEL_DIR" value="app/" />
+        <server name="REQUEST_SCHEME" value="http"/>
+        <server name="HTTP_HOST" value="localhost:8000"/>
     </php>
 
     <testsuites>
