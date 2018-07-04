@@ -2,41 +2,41 @@ version: "3.1"
 services:
 
     nginx:
-      image: nginx:alpine
-      container_name: football-leagues-nginx
-      working_dir: /var/www/app
-      volumes:
-          - .:/var/www/app
-          - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      ports:
-       - "8000:80"
+        image: nginx:alpine
+        container_name: football-leagues-nginx
+        working_dir: /var/www/app
+        volumes:
+            - .:/var/www/app
+            - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        ports:
+         - "8000:80"
 
     php-fpm:
-      build: docker/php-fpm
-      container_name: football-leagues-php-fpm
-      working_dir: /var/www/app
-      volumes:
-        - .:/var/www/app
-        - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+        build: docker/php-fpm
+        container_name: football-leagues-php-fpm
+        working_dir: /var/www/app
+        volumes:
+          - .:/var/www/app
+          - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
 
     database_dev:
-          image: mariadb:10.3.7
-          container_name: football-leagues-db-dev
-          environment:
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_DATABASE=football_leagues
-            - MYSQL_USER=football_leagues
-            - MYSQL_PASSWORD=football_leagues
-          ports:
-            - "8001:3306"
+        build: docker/database
+        container_name: football-leagues-db-dev
+        environment:
+          - MYSQL_ROOT_PASSWORD=root
+          - MYSQL_DATABASE=football_leagues
+          - MYSQL_USER=football_leagues
+          - MYSQL_PASSWORD=football_leagues
+        ports:
+          - "8001:3306"
 
     database_test:
-      image: mariadb:10.3.7
-      container_name: football-leagues-db-test
-      environment:
-        - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_DATABASE=football_leagues
-        - MYSQL_USER=football_leagues
-        - MYSQL_PASSWORD=football_leagues
-      ports:
-        - "8002:3306"
+        build: docker/database
+        container_name: football-leagues-db-test
+        environment:
+          - MYSQL_ROOT_PASSWORD=root
+          - MYSQL_DATABASE=football_leagues
+          - MYSQL_USER=football_leagues
+          - MYSQL_PASSWORD=football_leagues
+        ports:
+          - "8002:3306"
