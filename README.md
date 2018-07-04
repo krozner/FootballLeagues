@@ -23,13 +23,13 @@ login JSON request body example:
 ```
 for creating user check [FOSUserBundle](https://symfony.com/doc/2.0/bundles/FOSUserBundle/command_line_tools.html#create-a-user) doc
 
-> Create new team
-```
-POST /api/team 
-```
 > Get list of league teams
 ```
 GET /api/team/{leagueId} 
+```
+> Create new team
+```
+POST /api/team 
 ```
 > Update team data
 ```
