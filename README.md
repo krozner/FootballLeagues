@@ -17,7 +17,7 @@ $ bin/app-bash install
 ```
 POST /api/login_check 
 ```
-> Login JSON request body example:
+login JSON request body example:
 ```
 {"username":"test","password":"test"}
 ```
@@ -35,6 +35,12 @@ GET /api/team/{leagueId}
 ```
 PUT /api/team/{leagueId} 
 ```
+JSON request body example:
+```
+{"name": "Some name of football team", "league": 1, "strip": "example text"}
+```
+* name & league are required fields
+
 > Remove league
 ```
 DELETE /api/league/{leagueId} 
