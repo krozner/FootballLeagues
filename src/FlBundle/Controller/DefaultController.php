@@ -9,17 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/")
-     */
-    public function homeAction()
-    {
-        return $this->json([
-            'Football League',
-        ]);
-    }
 
     /**
+     * for test only
+     *
      * @Route("/token")
      */
     public function tokenAction()
@@ -28,7 +21,7 @@ class DefaultController extends Controller
             ->getRepository('FlBundle:User')
             ->findOneBy([]);
 
-        return $this->json([
+        return $this->get('api_response')->create([
             'token' => $this->get('lexik_jwt_authentication.jwt_manager')->create($user),
         ]);
     }

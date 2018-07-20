@@ -8,9 +8,10 @@ use FlBundle\Entity\League;
 use FlBundle\Entity\Team;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class TeamController extends BaseApiController
+class TeamController extends Controller
 {
     /**
      * Get a list of football teams in a single league
@@ -27,7 +28,7 @@ class TeamController extends BaseApiController
             ->getRepository('FlBundle:Team')
             ->findByLeague($league);
 
-        return $this->createCollectionResponse($teams);
+        return $this->get('api_response')->create($teams);
     }
 
     /**
@@ -41,7 +42,7 @@ class TeamController extends BaseApiController
             ->hydrate($request->request->all(), $team = new Team())
             ->save($team, $this->getUser());
 
-        return $this->createResponse($team);
+        return $this->get('api_response')->create($team);
     }
 
     /**
@@ -60,6 +61,6 @@ class TeamController extends BaseApiController
             ->hydrate($request->request->all(), $team)
             ->update($team, $this->getUser());
 
-        return $this->createResponse($team);
+        return $this->get('api_response')->create($team);
     }
 }

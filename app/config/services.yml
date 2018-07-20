@@ -16,7 +16,8 @@ services:
 
     api_subscriber:
         class: FlBundle\EventListener\ApiEventSubscriber
-        arguments: []
+        arguments:
+          - '@api_response'
         tags:
             - { name: kernel.event_subscriber }
         public: false
@@ -26,6 +27,11 @@ services:
         arguments:
             - '@doctrine'
 #            - '@security.token_storage'
+
+    api_response:
+        class: FlBundle\Service\ApiResponse
+        arguments:
+            - '@jms_serializer'
 
     league_manager:
         class: FlBundle\Service\LeagueManager
