@@ -32,14 +32,16 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return sprintf("%s %s", $this->firstName, $this->lastName);
     }
 
     /**
      * @return string
      */
-    public function getFirstName() {
+    public function getFirstName()
+    {
         return $this->firstName;
     }
 
@@ -56,7 +58,8 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getLastName() {
+    public function getLastName()
+    {
         return $this->lastName;
     }
 

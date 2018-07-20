@@ -13,7 +13,8 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 class ApiEventSubscriber implements EventSubscriberInterface
 {
-    private function isApiRequest(Request $request) {
+    private function isApiRequest(Request $request)
+    {
         return preg_match('/^\/api/', $request->getPathInfo());
     }
 
@@ -36,9 +37,7 @@ class ApiEventSubscriber implements EventSubscriberInterface
     {
         // for all post & put api request json body is required
         if ($this->isApiRequest($request = $event->getRequest())) {
-
             if (in_array($request->getMethod(), [Request::METHOD_POST, Request::METHOD_PUT])) {
-
                 if ($request->getContentType() != 'json' || !$request->getContent()) {
                     throw new BadRequestHttpException('Malformed JSON request body');
                 }

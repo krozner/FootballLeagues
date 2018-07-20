@@ -22,15 +22,12 @@ class LeagueManager
             throw new \RuntimeException("You cannot remove league created by other user");
         }
 
-        try
-        {
+        try {
             $this->doctrine->getManager()->remove($league);
             $this->doctrine->getManager()->flush();
-
         } catch (ForeignKeyConstraintViolationException  $e) {
             throw new \RuntimeException("Cannot remove league it has assigned teams. "
                 . "Try to remove teams from the league first", 500, $e);
         }
     }
-
 }

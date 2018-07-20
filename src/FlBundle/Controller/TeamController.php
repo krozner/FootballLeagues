@@ -60,5 +60,4 @@ class TeamController extends BaseApiController
 
         return $this->createResponse($team);
     }
-
 }

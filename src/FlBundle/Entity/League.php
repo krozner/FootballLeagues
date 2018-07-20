@@ -84,8 +84,4 @@ class League
         $this->createdBy = $createdBy;
         return $this;
     }
-
-
-
 }
-

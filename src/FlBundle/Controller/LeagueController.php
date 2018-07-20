@@ -25,5 +25,4 @@ class LeagueController extends BaseApiController
 
         return $this->json([]);
     }
-
 }

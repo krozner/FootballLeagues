@@ -30,5 +30,4 @@ class DefaultController extends Controller
             'token' => $this->get('lexik_jwt_authentication.jwt_manager')->create($user)
         ]);
     }
-
 }

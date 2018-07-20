@@ -136,7 +136,4 @@ class Team
         $this->league = $league;
         return $this;
     }
-
-
 }
-

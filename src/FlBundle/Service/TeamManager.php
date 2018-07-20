@@ -22,7 +22,7 @@ class TeamManager
         foreach ($keys as $key => $required) {
             if ($required && !isset($data[$key])) {
                 throw new \InvalidArgumentException("Invalid '{$key}' parameters");
-            } else if (!isset($data[$key])) {
+            } elseif (!isset($data[$key])) {
                 $data[$key] = null;
             }
         }
@@ -61,5 +61,4 @@ class TeamManager
         $this->doctrine->getManager()->merge($team);
         $this->doctrine->getManager()->flush();
     }
-
 }
