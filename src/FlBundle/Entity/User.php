@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace FlBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Entity()
@@ -28,13 +30,12 @@ class User extends BaseUser
      */
     private $lastName;
 
-
     /**
      * @return string
      */
     public function getName()
     {
-        return sprintf("%s %s", $this->firstName, $this->lastName);
+        return sprintf('%s %s', $this->firstName, $this->lastName);
     }
 
     /**
@@ -47,11 +48,13 @@ class User extends BaseUser
 
     /**
      * @param string $firstName
+     *
      * @return $this
      */
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
+
         return $this;
     }
 
@@ -65,11 +68,13 @@ class User extends BaseUser
 
     /**
      * @param string $lastName
+     *
      * @return $this
      */
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+
         return $this;
     }
 

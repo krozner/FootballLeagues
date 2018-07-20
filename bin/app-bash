@@ -7,6 +7,14 @@ case "$1" in
     docker exec -it $APP_NAME bash -c "composer install && php bin/console doctrine:schema:update --force"
 ;;
 
+"cs-fix")
+    docker exec -it $APP_NAME bash -c "/var/www/app/vendor/bin/php-cs-fixer fix"
+;;
+
+"grum-run")
+    docker exec -it $APP_NAME bash -c "/var/www/app/vendor/bin/grumphp run"
+;;
+
 *) docker exec -it $APP_NAME bash
    ;;
 esac

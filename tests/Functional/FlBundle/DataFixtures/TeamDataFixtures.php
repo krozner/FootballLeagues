@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Functional\FlBundle\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -10,15 +12,15 @@ class TeamDataFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $league = $manager->getRepository("FlBundle:League")
+        $league = $manager->getRepository('FlBundle:League')
             ->findOneBy([]);
 
         $team= new Team();
         $team
             ->setLeague($league)
             ->setCreatedBy($league->getCreatedBy())
-            ->setName("test team 1")
-            ->setStrip("test strip");
+            ->setName('test team 1')
+            ->setStrip('test strip');
 
         $manager->persist($team);
 
@@ -26,8 +28,8 @@ class TeamDataFixtures extends Fixture
         $team
             ->setLeague($league)
             ->setCreatedBy($league->getCreatedBy())
-            ->setName("test team 2")
-            ->setStrip("test strip");
+            ->setName('test team 2')
+            ->setStrip('test strip');
 
         $manager->persist($team);
 

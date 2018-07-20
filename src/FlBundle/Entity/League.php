@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace FlBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -59,11 +61,13 @@ class League
 
     /**
      * @param $name
+     *
      * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -77,11 +81,13 @@ class League
 
     /**
      * @param $createdBy
+     *
      * @return $this
      */
     public function setCreatedBy($createdBy)
     {
         $this->createdBy = $createdBy;
+
         return $this;
     }
 }

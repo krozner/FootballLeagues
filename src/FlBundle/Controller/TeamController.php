@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace FlBundle\Controller;
 
 use FlBundle\Entity\League;
@@ -19,10 +21,10 @@ class TeamController extends BaseApiController
     public function teamsAction(League $league = null)
     {
         if (null === $league) {
-            throw $this->createNotFoundException("League not found");
+            throw $this->createNotFoundException('League not found');
         }
         $teams = $this->getDoctrine()
-            ->getRepository("FlBundle:Team")
+            ->getRepository('FlBundle:Team')
             ->findByLeague($league);
 
         return $this->createCollectionResponse($teams);
@@ -35,7 +37,7 @@ class TeamController extends BaseApiController
      */
     public function createAction(Request $request)
     {
-        $this->get("team_manager")
+        $this->get('team_manager')
             ->hydrate($request->request->all(), $team = new Team())
             ->save($team, $this->getUser());
 
@@ -51,10 +53,10 @@ class TeamController extends BaseApiController
     public function updateAction(Team $team = null, Request $request)
     {
         if (null === $team) {
-            throw $this->createNotFoundException("Team not found");
+            throw $this->createNotFoundException('Team not found');
         }
 
-        $this->get("team_manager")
+        $this->get('team_manager')
             ->hydrate($request->request->all(), $team)
             ->update($team, $this->getUser());
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace FlBundle\Service;
 
 use Doctrine\Bundle\DoctrineBundle\Registry as DoctrineRegistry;
@@ -20,19 +22,19 @@ class TeamManager
         $keys = ['league' => true, 'name' => true, 'strip' => false];
 
         foreach ($keys as $key => $required) {
-            if ($required && !isset($data[$key])) {
+            if ($required && ! isset($data[$key])) {
                 throw new \InvalidArgumentException("Invalid '{$key}' parameters");
-            } elseif (!isset($data[$key])) {
+            } elseif (! isset($data[$key])) {
                 $data[$key] = null;
             }
         }
 
-        $league = $this->doctrine->getRepository("FlBundle:League")
+        $league = $this->doctrine->getRepository('FlBundle:League')
             ->findOneBy([
-                "id" => (int)$data['league']
+                'id' => (int)$data['league'],
             ]);
 
-        if (!$league) {
+        if (! $league) {
             throw new \InvalidArgumentException("League not found or invalid 'league' parameters");
         }
 

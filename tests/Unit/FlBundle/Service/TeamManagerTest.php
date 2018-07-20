@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\FlBundle\Service;
 
-use Doctrine\Bundle\DoctrineBundle\Registry;
-use FlBundle\Entity\Team;
 use FlBundle\Entity\League;
+use FlBundle\Entity\Team;
 use FlBundle\Repository\TeamRepository;
 use FlBundle\Service\TeamManager;
 use Tests\Unit\TestCase;
@@ -24,12 +25,12 @@ class TeamManagerTest extends TestCase
 
         $doctrine
             ->expects($this->once())
-            ->method("getRepository")
+            ->method('getRepository')
             ->willReturn($repository);
 
         $repository
             ->expects($this->once())
-            ->method("findOneBy")
+            ->method('findOneBy')
             ->willReturn(new League());
 
         $this->manger = new TeamManager($doctrine);
@@ -41,9 +42,9 @@ class TeamManagerTest extends TestCase
     public function is_team_hydrator_works()
     {
         $data = [
-            'name' => "hydrator test name",
-            'strip' => "hydrator test strip",
-            'league' => 1
+            'name'   => 'hydrator test name',
+            'strip'  => 'hydrator test strip',
+            'league' => 1,
         ];
 
         $this->manger->hydrate($data, $team = new Team());

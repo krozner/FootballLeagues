@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Functional\FlBundle\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -10,15 +12,15 @@ class LeagueDataFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $user = $manager->getRepository("FlBundle:User")
+        $user = $manager->getRepository('FlBundle:User')
             ->findOneBy([
-                "username" => "test"
+                'username' => 'test',
             ]);
 
         $league = new League();
         $league
             ->setCreatedBy($user)
-            ->setName("Test League");
+            ->setName('Test League');
 
         $manager->persist($league);
         $manager->flush();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace FlBundle\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -14,7 +16,7 @@ abstract class BaseApiController extends Controller
         $context = new SerializationContext();
         $context->setSerializeNull(true);
 
-        return $this->get("jms_serializer")->serialize($data, 'json', $context);
+        return $this->get('jms_serializer')->serialize($data, 'json', $context);
     }
 
     protected function createCollectionResponse($data)
@@ -23,10 +25,11 @@ abstract class BaseApiController extends Controller
             $content = $this->serialize($data->toArray(), 'json');
 
             $response = new JsonResponse($content, 200, [], true);
+
             return $response;
         }
 
-        throw new \RuntimeException("Serialize case not supported");
+        throw new \RuntimeException('Serialize case not supported');
     }
 
     protected function createResponse($entity)

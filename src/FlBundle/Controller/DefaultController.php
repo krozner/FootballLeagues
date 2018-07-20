@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace FlBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -13,7 +15,7 @@ class DefaultController extends Controller
     public function homeAction()
     {
         return $this->json([
-            "Football League"
+            'Football League',
         ]);
     }
 
@@ -23,11 +25,11 @@ class DefaultController extends Controller
     public function tokenAction()
     {
         $user = $this->getDoctrine()
-            ->getRepository("FlBundle:User")
+            ->getRepository('FlBundle:User')
             ->findOneBy([]);
 
         return $this->json([
-            'token' => $this->get('lexik_jwt_authentication.jwt_manager')->create($user)
+            'token' => $this->get('lexik_jwt_authentication.jwt_manager')->create($user),
         ]);
     }
 }

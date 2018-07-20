@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace FlBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -75,11 +77,13 @@ class Team
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -93,11 +97,13 @@ class Team
 
     /**
      * @param $strip
+     *
      * @return $this
      */
     public function setStrip($strip)
     {
         $this->strip = $strip;
+
         return $this;
     }
 
@@ -111,11 +117,13 @@ class Team
 
     /**
      * @param User $createdBy
+     *
      * @return $this
      */
     public function setCreatedBy(User $createdBy)
     {
         $this->createdBy = $createdBy;
+
         return $this;
     }
 
@@ -129,11 +137,13 @@ class Team
 
     /**
      * @param League $league
+     *
      * @return $this
      */
     public function setLeague(League $league)
     {
         $this->league = $league;
+
         return $this;
     }
 }

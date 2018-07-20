@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace FlBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
@@ -10,12 +12,13 @@ class TeamRepository extends EntityRepository
 {
     /**
      * @param League $league
+     *
      * @return TeamCollection
      */
     public function findByLeague(League $league): TeamCollection
     {
         $results = $this->findBy([
-            'league' => $league
+            'league' => $league,
         ]);
 
         return new TeamCollection($results);

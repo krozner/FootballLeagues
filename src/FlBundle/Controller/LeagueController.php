@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace FlBundle\Controller;
 
 use FlBundle\Entity\League;
@@ -17,10 +19,10 @@ class LeagueController extends BaseApiController
     public function deleteAction(League $league = null)
     {
         if (null === $league) {
-            throw $this->createNotFoundException("League not found");
+            throw $this->createNotFoundException('League not found');
         }
 
-        $this->get("league_manager")
+        $this->get('league_manager')
             ->delete($league, $this->getUser());
 
         return $this->json([]);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace FlBundle\EventListener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -27,7 +29,7 @@ class ApiEventSubscriber implements EventSubscriberInterface
                 : 500;
 
             $event->setResponse(new JsonResponse([
-                'code' => $code,
+                'code'    => $code,
                 'message' => $event->getException()->getMessage(),
             ]));
         }
@@ -38,7 +40,7 @@ class ApiEventSubscriber implements EventSubscriberInterface
         // for all post & put api request json body is required
         if ($this->isApiRequest($request = $event->getRequest())) {
             if (in_array($request->getMethod(), [Request::METHOD_POST, Request::METHOD_PUT])) {
-                if ($request->getContentType() != 'json' || !$request->getContent()) {
+                if ($request->getContentType() != 'json' || ! $request->getContent()) {
                     throw new BadRequestHttpException('Malformed JSON request body');
                 }
 
@@ -52,12 +54,11 @@ class ApiEventSubscriber implements EventSubscriberInterface
         }
     }
 
-
     public static function getSubscribedEvents()
     {
-        return array(
-            KernelEvents::EXCEPTION => 'onKernelException',
+        return [
+            KernelEvents::EXCEPTION  => 'onKernelException',
             KernelEvents::CONTROLLER => 'onKernelController',
-        );
+        ];
     }
 }

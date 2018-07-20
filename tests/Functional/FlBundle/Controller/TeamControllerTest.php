@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\FlBundle\Functional\Controller;
 
 use Tests\Functional\FlBundle\DataFixtures\LeagueDataFixtures;
@@ -21,7 +23,7 @@ class TeamControllerTest extends WebTestCase
      */
     public function should_get_not_found_league()
     {
-        $response = $this->apiRequest("GET", "/api/team/9");
+        $response = $this->apiRequest('GET', '/api/team/9');
         $this->assertTrue($response->getStatusCode() === 404);
     }
 
@@ -30,12 +32,12 @@ class TeamControllerTest extends WebTestCase
      */
     public function should_get_list_of_league_teams()
     {
-        $response = $this->apiRequest("GET", "/api/team/1");
+        $response = $this->apiRequest('GET', '/api/team/1');
 
         $teams = json_decode($response->getContent(), true);
 
-        $this->assertTrue(is_array($teams), "Teams list is not an array");
-        $this->assertTrue(count($teams) === 2, "Wrong number of teams returned");
+        $this->assertTrue(is_array($teams), 'Teams list is not an array');
+        $this->assertTrue(count($teams) === 2, 'Wrong number of teams returned');
     }
 
     /**
@@ -43,20 +45,20 @@ class TeamControllerTest extends WebTestCase
      */
     public function should_create_new_team()
     {
-        $response = $this->apiRequest("POST", "/api/team", [
-            'name' => 'new team',
+        $response = $this->apiRequest('POST', '/api/team', [
+            'name'   => 'new team',
             'league' => 1,
-            'strip' => 'new strip',
+            'strip'  => 'new strip',
         ]);
 
         $team = json_decode($response->getContent(), true);
 
         $this->assertTrue(isset($team['name']));
 
-        $response = $this->apiRequest("GET", "/api/team/1");
-        $teams = json_decode($response->getContent(), true);
+        $response = $this->apiRequest('GET', '/api/team/1');
+        $teams    = json_decode($response->getContent(), true);
 
-        $this->assertTrue(count($teams) === 3, "Wrong number of teams returned");
+        $this->assertTrue(count($teams) === 3, 'Wrong number of teams returned');
     }
 
     /**
@@ -64,10 +66,10 @@ class TeamControllerTest extends WebTestCase
      */
     public function should_update_team()
     {
-        $response = $this->apiRequest("PUT", "/api/team/1", [
-            'name' => 'updated team',
+        $response = $this->apiRequest('PUT', '/api/team/1', [
+            'name'   => 'updated team',
             'league' => 1,
-            'strip' => 'new strip',
+            'strip'  => 'new strip',
         ]);
 
         $team = json_decode($response->getContent(), true);
