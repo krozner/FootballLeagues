@@ -7,8 +7,9 @@ namespace FlBundle\Controller;
 use FlBundle\Entity\League;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class LeagueController extends BaseApiController
+class LeagueController extends Controller
 {
     /**
      * Remove football league
@@ -25,6 +26,6 @@ class LeagueController extends BaseApiController
         $this->get('league_manager')
             ->delete($league, $this->getUser());
 
-        return $this->json([]);
+        return $this->get('api_response')->create([]);
     }
 }
