@@ -8,6 +8,7 @@ use Doctrine\Bundle\DoctrineBundle\Registry as DoctrineRegistry;
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use FlBundle\Entity\League;
 use FlBundle\Entity\User;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class LeagueManager
 {
@@ -21,7 +22,7 @@ class LeagueManager
     public function delete(League $league, User $user)
     {
         if ($league->getCreatedBy() !== $user) {
-            throw new \RuntimeException('You cannot remove league created by other user');
+            throw new AccessDeniedHttpException('You cannot remove league created by other user');
         }
 
         $manager = $this->doctrine->getManager();
