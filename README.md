@@ -33,7 +33,7 @@ POST /api/team
 ```
 > Update team data
 ```
-PUT /api/team/{leagueId} 
+PUT /api/team/{teamId} 
 ```
 JSON request body example:
 ```
